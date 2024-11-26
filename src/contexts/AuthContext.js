@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
 	const logout = async () => {
 		try {
-			await AsyncStorage.removeItem("userId");
+			await AsyncStorage.removeItem("userToken");
 			setUserToken(null);
 		} catch (error) {
 			console.error("Error removing token from AsyncStorage:", error);
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
 	const loadToken = async () => {
 		try {
-			const token = await AsyncStorage.getItem("userId");
+			const token = await AsyncStorage.getItem("userToken");
 			if (token) {
 				setUserToken(token);
 			}

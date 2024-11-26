@@ -1,15 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, StyleSheet } from "react-native";
-
 import { ActivityIndicator, PaperProvider } from "react-native-paper";
 
 const Stack = createNativeStackNavigator();
 
 import LoginScreen from "../screens/LoginScreen";
-import HomeScreen from "../screens/HomeScreen";
+
 import SignupScreen from "../screens/SignupScreen";
 import { useAuth } from "../contexts/AuthContext";
+import { useEffect } from "react";
+import BottomNavigator from "./BottomNavigator";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
 	const { userToken, isLoading } = useAuth();
@@ -24,12 +29,50 @@ export default function App() {
 
 	return (
 		<Stack.Navigator>
+			{/* Conditional Rendering Based on Authentication */}
 			{userToken ? (
-				<Stack.Screen name="Home" component={HomeScreen} />
+				<Stack.Screen
+					name="Home"
+					component={BottomNavigator}
+					options={{
+						headerShown: false,
+					}}
+				/>
 			) : (
 				<>
-					<Stack.Screen name="Login" component={LoginScreen} />
-					<Stack.Screen name="Signup" component={SignupScreen} />
+					{/* Login Screen Header Styling */}
+					<Stack.Screen
+						name="Login"
+						component={LoginScreen}
+						options={{
+							title: "Login",
+							headerStyle: {
+								backgroundColor: "#6200EE", // Purple background color
+							},
+							headerTintColor: "#fff", // White text color for the header
+							headerTitleStyle: {
+								fontWeight: "bold", // Bold title text
+								fontSize: 24, // Larger font size for title
+							},
+						}}
+					/>
+
+					{/* Signup Screen Header Styling */}
+					<Stack.Screen
+						name="Signup"
+						component={SignupScreen}
+						options={{
+							title: "Sign Up",
+							headerStyle: {
+								backgroundColor: "#6200EE", // Purple background color
+							},
+							headerTintColor: "#fff", // White text color for the header
+							headerTitleStyle: {
+								fontWeight: "bold", // Bold title text
+								fontSize: 24, // Larger font size for title
+							},
+						}}
+					/>
 				</>
 			)}
 		</Stack.Navigator>
