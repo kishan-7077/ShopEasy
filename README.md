@@ -110,10 +110,6 @@ ShopEasy is a modern e-commerce mobile application built with **Expo** for the f
 
 ---
 
-### 🤝 Contributing
-We welcome contributions! Please submit a pull request or open an issue for any bugs or feature requests.
-
----
 
 ### 📜 License
 This project is licensed under the [MIT License](LICENSE).
