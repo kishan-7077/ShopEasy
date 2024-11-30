@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 import { Button } from "react-native-paper"; // Using react-native-paper for styled buttons
@@ -54,7 +56,7 @@ const CheckoutScreen = () => {
 
 	const handlePayment = async () => {
 		const paymentOptions = {
-			key: "rzp_test_Z3WvmwtiljK1Zz", // Replace with your Razorpay Key ID
+			key: process.env.RAZORPAY_KEY, // Replace with your Razorpay Key ID
 			amount: amountInPaisa, // Amount in paisa
 			currency: "INR",
 			name: "ShopEasy",

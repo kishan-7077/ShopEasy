@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^2.3.0",
     "@types/react-native-razorpay": "^2.2.6",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "expo": "~52.0.10",
     "expo-status-bar": "~2.0.0",
     "expo-web-browser": "~14.0.1",
