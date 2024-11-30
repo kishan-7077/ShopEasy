@@ -7,10 +7,13 @@ import {
 	incrementQuantity,
 	decrementQuantity,
 } from "../redux/cartReducer"; // Import actions
+import { useNavigation } from "@react-navigation/native";
 
 const CartScreen = () => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
+
+	const navigation = useNavigation();
 
 	// Calculate total price
 	const getTotalPrice = () => {
@@ -35,6 +38,7 @@ const CartScreen = () => {
 	// Handle proceed to checkout (for now, we just log it)
 	const handleProceedToCheckout = () => {
 		console.log("Proceeding to checkout");
+		navigation.navigate("Checkout");
 		// You can navigate to a checkout screen here if you have one.
 	};
 
@@ -57,7 +61,7 @@ const CartScreen = () => {
 							<Card.Content>
 								<Title style={styles.productName}>{product.name}</Title>
 								<Paragraph style={styles.price}>
-									${product.price.toFixed(2)} x {product.quantity} = $
+									₹ {product.price.toFixed(2)} x {product.quantity} = $
 									{(product.price * product.quantity).toFixed(2)}
 								</Paragraph>
 							</Card.Content>
@@ -99,7 +103,7 @@ const CartScreen = () => {
 			{cart.length > 0 && (
 				<View style={styles.totalPriceContainer}>
 					<Paragraph style={styles.totalPriceText}>
-						Total Price: ${getTotalPrice().toFixed(2)}
+						Total Price: ₹ {getTotalPrice().toFixed(2)}
 					</Paragraph>
 					<Button
 						mode="contained"

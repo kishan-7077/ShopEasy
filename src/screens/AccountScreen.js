@@ -10,9 +10,11 @@ const AccountScreen = () => {
 
 	useEffect(() => {
 		const fetchUserDetails = async () => {
+			console.log(userToken);
+
 			try {
 				const response = await axios.get(
-					"http://192.168.1.7:5000/user/isAuthorized",
+					"http://192.168.114.110:5000/user/isAuthorized",
 					{
 						headers: {
 							authorization: `Bearer ${userToken}`,
@@ -23,7 +25,7 @@ const AccountScreen = () => {
 
 				try {
 					const userResponse = await axios.post(
-						"http://192.168.1.7:5000/user/details",
+						"http://192.168.114.110:5000/user/details",
 						{ _id: userId }
 					);
 					setUserDetails(userResponse.data);

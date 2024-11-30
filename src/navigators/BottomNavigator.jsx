@@ -5,7 +5,7 @@ import CartScreen from "../screens/CartScreen";
 import HomeScreen from "../screens/HomeScreen";
 
 const HomeRoute = () => <HomeScreen />;
-const CartRoute = () => <CartScreen />;
+const CartRoute = ({ navigation }) => <CartScreen navigation={navigation} />;
 const AccountRoute = () => <AccountScreen />;
 
 const BottomNavigator = () => {

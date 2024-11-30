@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import BottomNavigator from "./BottomNavigator";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import CheckoutScreen from "../screens/CheckoutScreen";
+import SuccessScreen from "../screens/SuccessScreen";
+import CartScreen from "../screens/CartScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,13 +34,30 @@ export default function App() {
 		<Stack.Navigator>
 			{/* Conditional Rendering Based on Authentication */}
 			{userToken ? (
-				<Stack.Screen
-					name="Home"
-					component={BottomNavigator}
-					options={{
-						headerShown: false,
-					}}
-				/>
+				<>
+					<Stack.Screen
+						name="Home"
+						component={BottomNavigator}
+						options={{
+							headerShown: false,
+						}}
+					/>
+					<Stack.Screen
+						name="Checkout"
+						component={CheckoutScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Success"
+						component={SuccessScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Cart"
+						component={CartScreen}
+						options={{ headerShown: false }}
+					/>
+				</>
 			) : (
 				<>
 					{/* Login Screen Header Styling */}

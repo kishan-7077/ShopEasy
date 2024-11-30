@@ -18,11 +18,14 @@ const SignupScreen = ({ navigation }) => {
 
 	const handleSignupPress = async (userName, email, password) => {
 		try {
-			const response = await axios.post("http://192.168.1.7:5000/user/signup", {
-				userName: userName,
-				email: email,
-				password: password,
-			});
+			const response = await axios.post(
+				"http://192.168.114.110:5000/user/signup",
+				{
+					userName: userName,
+					email: email,
+					password: password,
+				}
+			);
 			console.log(response.data);
 			login(response.data.token);
 

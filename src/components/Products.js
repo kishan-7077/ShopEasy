@@ -73,7 +73,7 @@ const ProductsScreen = () => {
 							{product.description}
 						</Paragraph>
 						<Paragraph style={styles.price}>
-							${product.price.toFixed(2)}
+							₹ {product.price.toFixed(2)}
 						</Paragraph>
 						<Paragraph style={styles.rating}>
 							Rating: {product.rating} ⭐
